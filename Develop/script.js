@@ -12,7 +12,7 @@ generateBtn.addEventListener("click",writePassword);
 function writePassword() {
 
   var allChar =[]
-  var passwordFinal =[]
+
 
    //- - - - - - - - - ARRAYS  - - - - - - - - - - - -
 var numberChar =[0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9]
@@ -30,13 +30,13 @@ var specChar = [ "!", "#" ,"&" ,"^", "*", "@", "~", "_", "-",]
 var passwordLength = prompt("How many characters would you like for you password? (Password must contain at least 8 characters.)")
 var numberCharLength = parseInt(passwordLength);
 
-//if else statements for the password length requirements.
+//if else statements to ensure the user meets the password length requirements.
 if (passwordLength > 124){
 alert ("Your password cannot exceed 124 characters.");
 return;
 }
 if (passwordLength <8) {
-  alert("Password must be at least 8 characters.")
+  alert("Password must be at least 8 characters.");
   return;
 }
 
@@ -49,17 +49,65 @@ else{
 }
 
 
+// What does the user want their password to contain.
+var numberCase = confirm ("Would you like your password to contain numbers?");
+var lowerCase= confirm  ("Would you like your password to contain lowercase characters?");
+var upperCase= confirm ("Would you like your password to contain uppercase characters?");
+var specialCase= confirm ("Would you like your password to contain special characters?");
 
-//make sure the 
+//if the user failes to choose at least one of the confirms the screen will alert him to do so. 
+if(!numberCase && !lowerCase && !upperCase && !specialCase){
+  alert("You must confirm at least one in order to move forward.");
+return;
+}
+
+//if the user selects on of the arrays then the characters will be pushed into the allChar variable.
+
+if(numberCase){ 
+  addChar(numberChar);
+  }
+ 
+ if(lowerCase){ 
+    addChar(lowerChar);
+    }
+ if(upperCase){ 
+      addChar(upperChar);
+  
+    }
+
+ if(specialCase){ 
+        addChar(specChar);
+      }        
+console.log(allChar)
 
 
 
-  var password = generatePassword();
+
+
+//A function that pushes all the strings and numbers into one variable. 
+  function addChar(arr) {
+    for ( var j =0; j <arr.length; j++){
+      allChar.push(arr[j])
+    }
+  }
+
+  var generatePassword = []
+
+  for(var i=0; i<passwordLength;i++){
+    var randomIndex = Math.floor(Math.random()* allChar.length);
+  
+
+  generatePassword = generatePassword+allChar[randomIndex];
+  console.log(generatePassword)
+
+  }
+  
   var passwordText = document.querySelector("#password");
     
 
-  passwordText.value = password;
+  passwordText.value = generatePassword
 
 }
+
 
 
