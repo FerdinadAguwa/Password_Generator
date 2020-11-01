@@ -23,7 +23,7 @@ var upperChar =["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
 var lowerChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t",
 "u","v","w","x","y","z"]
 
-var specChar = [ "!", "#" ,"&" ,"^", "*", "@", "~", "_", "-",] 
+var specChar = [ "!", "#" ,"&" ,"^", "*", "@", "~", "_", "-", ">","<","?"] 
 
 //var for the password length
 
@@ -31,7 +31,7 @@ var passwordLength = prompt("How many characters would you like for you password
 var numberCharLength = parseInt(passwordLength);
 
 //if else statements to ensure the user meets the password length requirements.
-if (passwordLength > 124){
+if (passwordLength > 128){
 alert ("Your password cannot exceed 124 characters.");
 return;
 }
@@ -49,7 +49,7 @@ else{
 }
 
 
-// What does the user want their password to contain.
+// What will this password contain...Numbers/Uppercase/Lowercase or Special Characters
 var numberCase = confirm ("Would you like your password to contain numbers?");
 var lowerCase= confirm  ("Would you like your password to contain lowercase characters?");
 var upperCase= confirm ("Would you like your password to contain uppercase characters?");
@@ -61,7 +61,7 @@ if(!numberCase && !lowerCase && !upperCase && !specialCase){
 return;
 }
 
-//if the user selects on of the arrays then the characters will be pushed into the allChar variable.
+//if the user selects one of the arrays then the characters from the given array will be pushed into the allChar variable.
 
 if(numberCase){ 
   addChar(numberChar);
